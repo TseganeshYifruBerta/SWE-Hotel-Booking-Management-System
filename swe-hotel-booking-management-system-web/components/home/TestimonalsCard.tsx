@@ -7,7 +7,7 @@ const TestimonalsCard : React.FC = () => {
             Testimonials
           </h1>
           <h3 className="text-lg justify-center w-full flex">
-            "Calm, Serene, Retro – What a way to relax and enjoy"
+            &quot; Calm, Serene, Retro What a way to relax and enjoy &quot;
           </h3>
           <p className="justify-center flex w-full">Mr. and Mrs. Baxter, UK</p>
         </div>
