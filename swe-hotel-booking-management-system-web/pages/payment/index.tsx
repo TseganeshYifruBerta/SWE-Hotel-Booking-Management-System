@@ -7,12 +7,14 @@ function Payment() {
           <div className="w-1/2">
             <PaymentCard />
           </div>
-          <div className="w-1/2 border-l-2 border-black pl-6 ml-6">
+          <div className="border-r border-black h-72 mt-16"></div>
+          <div className="w-1/2 pl-6 ml-6">
             <Image
               src={"/images/payment.png"}
               alt={""}
               width={400}
               height={400}
+              className="pt-16"
             />
           </div>
         </div>

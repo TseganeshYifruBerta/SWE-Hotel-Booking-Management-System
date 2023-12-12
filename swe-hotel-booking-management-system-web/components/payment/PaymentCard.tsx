@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const PaymentCard: React.FC = () => {
  return (
-   <div className="max-w-md mx-auto p-8 rounded-md">
+   <div className="max-w-md mx-auto p-8">
      <h1 className="text-2xl font-semibold mb-6">Payment Details</h1>
 
      <div className="mb-4">
