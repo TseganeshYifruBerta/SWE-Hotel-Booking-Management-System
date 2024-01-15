@@ -1,3 +1,116 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+
+header {
+    background-color:white;
+    color: #fff;
+    padding: 20px;
+    text-align: end;
+  }
+  .HOTEL{
+    text-align: left;
+    font-style: italic;
+    width:100px;
+    height: 40px;
+    background-color: blue;
+    border-bottom-left-radius: 120%;
+    border-bottom-right-radius: 125%;
+    text-align: center;
+  }
+ 
+  
+  nav ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    margin-inline: 20px;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 10px;
+
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color:black;
+  }
+ 
+footer {
+
+   
+    background-color:rgb(10, 2, 58);
+    color: #fff;
+    width:100%;
+    position:absolute;
+    border-style:2px solid #333;
+    box-shadow: 5px 5px 10px #888;
+    text-align: center;
+    bottom:0;
+  }
+  
+  .row{
+    width:100%;
+    margin: auto;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+
+
+  }
+  p{
+    font-size:16px ;
+    font-style: oblique;
+    margin-inline-end: 10px;
+    padding-left: 20px;
+    height:10px;
+    
+
+  }
+  .col nav ul li {
+    color:#fff;
+    display: block;
+    height: 30px;
+  
+
+  }
+
+  .col nav ul li a{
+    color:#fff;
+    
+
+
+  }
+  .col{
+    padding: 10;
+    gap:10px;
+    margin-bottom: 10px;
+    color:#fff;
+    
+
+  }
+  
+  
+ .icon.container{
+  margin: 10px 10px 10px 10px;
+ }
+
+ .icon.container a{
+  display: block;
+ }
+
+  .icon{
+    width:30px;
+    height: 30px;
+    margin-right:10px;
+    margin-top: 10px;
+    
+  }
+  .main{
+    display: flex;
+  }
+
+
+  
