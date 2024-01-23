@@ -29,8 +29,8 @@ const paymentMethod = async (req, res) => {
       }
     //  console.log( req.file)
       const photoPath = req.file.path;
-        const phoneNumber = req.body.phoneNumber;
-        const transactionId = req.body.transactionId;
+      const phoneNumber = req.body.phoneNumber;
+      const transactionId = req.body.transactionId;
       const payment = await Payment.create({
         uuid: Id,
         photo: photoPath,
