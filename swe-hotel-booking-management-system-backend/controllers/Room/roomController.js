@@ -64,5 +64,46 @@ const addRoomMethod = async (req, res) => {
       });
   }
 };
-
-module.exports = { addRoomMethod };
+const editRoomMethod = async (req, res) => {
+const { id } = req.params;
+  try {
+    upload.single("roomPhoto")(req, res, async function (err) {
+      if (err instanceof multer.MulterError) {
+        return res
+          .status(500)
+          .json({ message: "An error occurred while uploading the photo", err });
+      } else if (err) {
+        return res
+          .status(500)
+          .json({
+            message: "An unknown error occurred while uploading the photo",
+            error: err.message,
+          });
+      }
+      //  console.log( req.file)
+    const editRoom = await Room.findByPk(id)
+    if (!editRoom) {
+      return res.status(404).json({ message: "Room not found" });
+    }
+    // editRoom.photo = req.file.path;
+    editRoom.title = req.body.title;
+    editRoom.description = req.body.description;
+    editRoom.status = req.body.status;
+    editRoom.price = req.body.price;
+    editRoom.availableRooms = req.body.availableRooms;
+    if (req.file) {
+      editRoom.photo = req.file.path;
+    }
+    await editRoom.save();
+    
+    res.status(200).json(editRoom);
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "An error occurred while creating the room",
+      error: error.message,
+    });
+  }
+};
+module.exports = { addRoomMethod, editRoomMethod };
