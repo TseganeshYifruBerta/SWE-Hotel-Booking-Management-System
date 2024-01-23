@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "@/store";
@@ -13,7 +12,7 @@ const PaymentCard: React.FC = () => {
   const [transactionId, setTransactionId] = useState("")
 
   const dispatch: AppDispatch = useDispatch(); // Use AppDispatch type
-  useSelector((state: RootState) => state.studentregister);
+  useSelector((state: RootState) => state.payment);
 
  const data = {
    phoneNumber: phoneNumber,

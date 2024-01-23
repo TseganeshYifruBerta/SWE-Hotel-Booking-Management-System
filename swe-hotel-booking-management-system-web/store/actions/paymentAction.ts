@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const backendURL = "http://localhost:6000";
 export interface paymentProps {
- phoneNUmber: string,
+ phoneNumber: string,
  photo: string,
  transactionId: string
 }
@@ -31,8 +31,8 @@ export const userPayment = createAsyncThunk<
   PaymentState,
   paymentProps
 >(
-  "payement",
-  async ({ phoneNUmber, photo, transactionId}) => {
+  "payment",
+  async ({ phoneNumber, photo, transactionId}) => {
     try {
       const config = {
         headers: {
@@ -42,7 +42,7 @@ export const userPayment = createAsyncThunk<
 
       const response: AxiosResponse<PaymentState> = await axios.post(
         `${backendURL}/room/payment`,
-        { phoneNUmber, photo, transactionId },
+        { phoneNumber, photo, transactionId },
         config
       );
       // Extract only the serializable parts of the response
