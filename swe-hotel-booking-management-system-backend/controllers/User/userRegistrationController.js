@@ -5,8 +5,18 @@ const createUser = async (req, res) => {
   const { name, phoneNumber, password } = req.body;
   const Id = uuidv4();
   try {
+    const existedphoneNumber = await User.findOne({
+      where: {
+        phoneNumber: phoneNumber,
+      },
+    });
+    if (existedphoneNumber) {
+      return res.status(403).json({
+        message: "The  phoneNumber is already in use",
+      });
+    }
     const newUser = await User.create({
-      uuid: Id,
+     
       name,
       phoneNumber,
       password,
@@ -18,7 +28,7 @@ const createUser = async (req, res) => {
     res
       .status(500)
       .json({
-        message: "An error occurred while creating the student",
+        message: "An error occurred while registering",
         error: error.message,
       });
   }
