@@ -1,24 +1,29 @@
 const { Router } = require("express");
 
-const {
-  paymentMethod,
-} = require("../../controllers/payment/paymentController");
+// const {
+//   paymentMethod,
+// } = require("../../controllers/payment/paymentController");
 const {
   addRoomMethod,
 } = require("../../controllers/Room/roomController");
 const { editRoomMethod } = require("../../controllers/Room/roomController");
-const { getAllRooms , getAllRoomsById } = require("../../controllers/Room/roomManagement");
+const {
+  getAllRooms,
+  getAllRoomsById,
+  deleteRoom,
+} = require("../../controllers/Room/roomManagement");
 
-const paymentRouter = Router();
+const roomRouter = Router();
 
-paymentRouter.post("/payment", paymentMethod);
-paymentRouter.post("/addRoom", addRoomMethod); 
-paymentRouter.put("/editRoom/:id", editRoomMethod); 
-paymentRouter.get("/getRoomById/:id", getAllRoomsById); 
-paymentRouter.get("/getAllRooms", getAllRooms); 
-
-
-
+// roomRouter.post("/payment", paymentMethod);
+roomRouter.post("/addRoom", addRoomMethod); 
+roomRouter.put("/editRoom/:id", editRoomMethod); 
+roomRouter.get("/getRoomById/:id", getAllRoomsById); 
+roomRouter.get("/getAllRooms", getAllRooms); 
+roomRouter.delete("/deleteRoom/:id", deleteRoom); 
 
 
-module.exports = paymentRouter;
+
+
+
+module.exports = roomRouter;

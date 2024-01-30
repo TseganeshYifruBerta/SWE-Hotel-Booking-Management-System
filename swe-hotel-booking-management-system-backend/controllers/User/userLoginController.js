@@ -1,5 +1,5 @@
-const User = require("../../models/User");
-const logginUser = require("../../models/loginUser");
+const User = require("../../models/auth/User");
+const logginUser = require("../../models/auth/loginUser");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const generateSecretKey = () => {
@@ -12,10 +12,10 @@ const userLogin = async (req, res) => {
   try {
     const user = await User.findOne({
       where: {
-        phoneNumber
+        phoneNumber,
       },
     });
-    const name = user.name
+    const name = user.name;
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });
@@ -31,7 +31,6 @@ const userLogin = async (req, res) => {
     const token = jwt.sign({ phoneNumber }, secretKey, {
       expiresIn: tokenExpiration,
     });
-   
 
     const loggedInUser = await logginUser.create({
       name: name,

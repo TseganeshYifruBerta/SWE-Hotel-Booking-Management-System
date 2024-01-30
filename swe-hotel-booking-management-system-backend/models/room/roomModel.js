@@ -3,13 +3,8 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../../config/db.config");
 
 const Room = sequelize.define("roomDatas", {
-  uuid: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    primaryKey: true,
-  },
   photo: {
-    type: DataTypes.BLOB("long"),
+    type: DataTypes.STRING,
     allowNull: false, // Field cannot be null
   },
   title: {
@@ -25,7 +20,7 @@ const Room = sequelize.define("roomDatas", {
     allowNull: false, // Field cannot be null
   },
   status: {
-    type: DataTypes.ENUM("available", "unavailable"),
+    type: DataTypes.STRING,
     allowNull: false,
   },
   availableRooms: {

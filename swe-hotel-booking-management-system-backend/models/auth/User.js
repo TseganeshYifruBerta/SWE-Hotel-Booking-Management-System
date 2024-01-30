@@ -1,8 +1,8 @@
 // student.model.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db.config");
+const sequelize = require("../../config/db.config");
 
-const logginUser = sequelize.define("loggedInUserData", {
+const User = sequelize.define("userData", {
   name: {
     type: DataTypes.STRING,
     allowNull: false, // Field cannot be null
@@ -19,12 +19,17 @@ const logginUser = sequelize.define("loggedInUserData", {
       len: [6, 100], // Password length must be between 6 and 100 characters
     },
   },
-  token: {
-    type: DataTypes.STRING,
+  confirmPassword: {
+    type: DataTypes.VIRTUAL,
     allowNull: false,
+    validate: {
+      isConfirmed(value) {
+        if (value !== this.password) {
+          throw new Error("Passwords do not match");
+        }
+      },
+    },
   },
 });
 
-
-
-module.exports = logginUser;
+module.exports = User;

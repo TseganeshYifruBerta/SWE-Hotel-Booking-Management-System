@@ -18,7 +18,7 @@ const getAllRoomsById = async (req, res) => {
   try {
     const room = await Room.findOne({
       where: {
-        uuid: id,
+        id: id,
       },
     });
 
@@ -33,5 +33,27 @@ const getAllRoomsById = async (req, res) => {
   }
 };
 
+const deleteRoom = async (req, res) => {
+  const { id } = req.params;
 
-module.exports = {getAllRooms , getAllRoomsById}
+  try {
+    const deletedRoom = await Room.findOne({
+      where:{
+        id:id
+      }
+    })
+ 
+    if (!deletedRoom) {
+      return res.status(404).json({ error: "Room is not found" });
+    }
+
+    // Delete the question
+    await deletedRoom.destroy();
+
+    return res.status(200).json({ message: "Room deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+module.exports = { getAllRooms, getAllRoomsById, deleteRoom };
