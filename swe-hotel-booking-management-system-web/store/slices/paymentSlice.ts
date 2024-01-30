@@ -4,7 +4,7 @@ import { paymentProps, PaymentState } from "../actions/paymentAction";
 const initialState: PaymentState = {
   message: {
    phoneNumber:"",
-   photo:"",
+   photo:null,
    transactionId:""
   },
 

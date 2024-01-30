@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AppDispatch, RootState } from "@/store";
 import { userPayment } from "@/store/actions/paymentAction";
 import router from "next/router";
+import Link from "next/link";
+import LoadImage from "@/pages/home/image";
 
 const PaymentCard: React.FC = () => {
 
   const [phoneNumber, setPhoneNumber] = useState("")
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState<File | null>(null);
   const [transactionId, setTransactionId] = useState("")
-
+const [imageUrl, setImageUrl] = useState("")
   const dispatch: AppDispatch = useDispatch(); // Use AppDispatch type
   useSelector((state: RootState) => state.payment);
 
@@ -26,11 +28,11 @@ const submitForm = async (data: any, e: React.FormEvent) => {
     (data.photo = photo),
     (data.transactionId = transactionId);
     
-
+console.log(data)
   try {
     await dispatch(userPayment(data));
     setTimeout(() => {
-      router.push("/");
+      // router.push("/");
     }, 1000);
     console.log("Payment fullfilled succesfully");
   } catch (error) {
@@ -38,7 +40,50 @@ const submitForm = async (data: any, e: React.FormEvent) => {
   }
 };
 
+ const handlePhotoChange = async (e: ChangeEvent<HTMLInputElement>) => {
+   const file = e.target.files?.[0];
+   const blobFile:any = await convertFileToBlob(file);
 
+   setPhoto(blobFile);
+    setImageUrl(URL.createObjectURL(blobFile));
+
+   console.log(photo)
+ };
+  const convertFileToBlob = (file:any) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        if (reader.result) {
+          const blob = new Blob([reader.result], { type: file.type });
+          resolve(blob);
+        } else {
+          reject(new Error("Failed to read file."));
+        }
+      };
+
+      reader.onerror = reject;
+
+      reader.readAsArrayBuffer(file);
+    });
+  };
+
+
+   const handlePhoneChange = (event:any) => {
+     // Remove any non-numeric characters from the input
+     const formattedPhoneNumber = event.target.value.replace(/\D/g, "");
+     // Restrict the input to 10 characters
+     const truncatedPhoneNumber = formattedPhoneNumber.slice(0, 10);
+     setPhoneNumber(truncatedPhoneNumber);
+   };
+
+     const handleTransactionChange = (event: any) => {
+       
+       let truncatedTransaction = event.target.value.slice(0, 10);
+       truncatedTransaction.replace(/[^A-Z0-9]/g, "");
+       truncatedTransaction = truncatedTransaction.toUpperCase()
+       setTransactionId(truncatedTransaction);
+     };
  return (
    <form onSubmit={(e) => submitForm(data, e)}>
      <div className="max-w-md mx-auto p-8">
@@ -51,13 +96,13 @@ const submitForm = async (data: any, e: React.FormEvent) => {
            type="tel"
            id="photo"
            className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
-           placeholder="Enter your phone number"
+           placeholder="Enter valid phone number"
            value={phoneNumber}
-           onChange={(e) => setPhoneNumber(e.target.value)}
+           onChange={handlePhoneChange}
          />
        </div>
 
-       {/* Photo (Screenshot) */}
+
        <div className="mb-4">
          <label htmlFor="photo" className="text-sm font-medium text-gray-600">
            Photo (Screenshot)
@@ -67,12 +112,11 @@ const submitForm = async (data: any, e: React.FormEvent) => {
            id="photo"
            accept="image/*"
            className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
-           value={photo}
-           onChange={(e) => setPhoto(e.target.value)}
+           onChange={handlePhotoChange}
          />
        </div>
 
-       {/* Transaction ID */}
+
        <div className="mb-4">
          <label
            htmlFor="transactionId"
@@ -83,14 +127,13 @@ const submitForm = async (data: any, e: React.FormEvent) => {
          <input
            type="text"
            id="transactionId"
-           placeholder="Enter transaction ID"
+           placeholder="Only Uppercases or Numbers"
            className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
            value={transactionId}
-           onChange={(e) => setTransactionId(e.target.value)}
+           onChange={handleTransactionChange}
          />
        </div>
 
-       {/* Booking Button */}
        <button className="border-blue-500 border-4 px-4 py-2 rounded-md">
          Book Now
        </button>

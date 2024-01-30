@@ -3,9 +3,9 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const backendURL = "http://localhost:6000";
 export interface paymentProps {
- phoneNumber: string,
- photo: string,
- transactionId: string
+  phoneNumber: string;
+  photo: Blob | null;
+  transactionId: string;
 }
 
 
