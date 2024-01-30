@@ -2,9 +2,9 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../../config/db.config");
 
 const adminLogin = sequelize.define("adminLogin", {
-  email: {
+  phoneNumber: {
     type: DataTypes.STRING,
-    defaultValue: "admin@gmail.com",
+    defaultValue: "0123456789",
   },
   password: {
     type: DataTypes.STRING,
