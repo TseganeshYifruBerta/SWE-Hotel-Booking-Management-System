@@ -1,4 +1,5 @@
-import ContactCard from "@/components/contact_us/ContactUsCard";
+import FeedbackCard from "@/components/feedback/FeedbackCard";
+import ContactCard from "@/components/feedback/FeedbackCard";
 
 function ContactUs() {
     return (
@@ -20,7 +21,7 @@ function ContactUs() {
             <p>Phone: +44 345 678 903</p>
             <p>Email: luxury_hotels@gmail.com</p>
           </div>
-          <ContactCard />
+          <FeedbackCard />
         </div>
       </div>
     );

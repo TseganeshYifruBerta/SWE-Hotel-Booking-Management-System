@@ -6,7 +6,7 @@ interface loadProps {
 const LoadImage : React.FC<loadProps> = ({image}) => {
     return(
         <div>
-<Image src={image} alt={''} width={500} height={500}/>
+<Image src={image} alt={''} width={500} />
         </div>
     )
 }
