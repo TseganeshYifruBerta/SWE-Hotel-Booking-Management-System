@@ -1,4 +1,5 @@
 const Payment = require("../../models/payment/paymentModel");
+const Room = require("../../models/room/roomModel")
 // const { v4: uuidv4 } = require("uuid");
 // const multer = require("multer");
 // const fs = require("fs");
@@ -16,7 +17,7 @@ const Payment = require("../../models/payment/paymentModel");
 // const upload = multer({ storage: storage });
 
 const paymentMethod = async (req, res) => {
-  const {photo , phoneNumber , transactionId, email} = req.body
+  const {photo , phoneNumber , transactionId, email, id} = req.body
 
   try {
    
@@ -52,6 +53,21 @@ const paymentMethod = async (req, res) => {
         email
         
       });
+      const roomCount = await Room.findOne({
+        where:{
+          id: id
+
+
+        }
+      })
+      roomCount.availableRooms -= 1
+      if (roomCount.availableRooms == 0){
+        roomCount.status = "un available"
+      }
+    await roomCount.save();
+
+      
+
 
       res.status(200).json(payment);
     // });
