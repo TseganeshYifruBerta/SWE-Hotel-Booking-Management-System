@@ -10,7 +10,7 @@ export const getAllFeedbackApi = createApi({
   endpoints: (builder) => ({
     getAllFeedback: builder.query({
       query: () => {
-        let url = "http://localhost:5000/question/getAllQuestions";
+        let url = "http://localhost:5000/feedback/getAllFeedbacks";
 
         return {
           url: url,

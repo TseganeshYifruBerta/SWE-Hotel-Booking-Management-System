@@ -10,11 +10,11 @@ export const getRoomDetailByIdApi = createApi({
   endpoints: (builder) => ({
     getRoomDetailById: builder.query({
       query: (params) => {
-        const { userId } = params;
-        let url = "http://localhost:5000/question/getAllQuestionsById";
+        const { roomId } = params;
+        let url = "http://localhost:5000/room/getRoomById";
         console.log(params);
         const queryParams = [];
-        queryParams.push(`${userId}`);
+        queryParams.push(`${roomId}`);
         return {
           url: queryParams.length > 0 ? `${url}/${queryParams.join("/")}` : url,
           method: "GET",

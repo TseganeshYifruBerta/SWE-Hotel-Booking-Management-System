@@ -10,7 +10,7 @@ export const getAllPaymentsApi = createApi({
   endpoints: (builder) => ({
     getAllPayments: builder.query({
       query: () => {
-        let url = "http://localhost:5000/question/getAllQuestionsById";
+        let url = "http://localhost:5000/payment/getPayments";
 
         return {
           url: url,

@@ -1,3 +1,4 @@
+import LoadImage from "@/pages/home/image";
 import { AddRoomFormData, addroom } from "@/store/rooms/add-rooms-api";
 import { ChangeEvent, useState } from "react";
 import { InjectedFormProps, reduxForm } from "redux-form";
@@ -45,13 +46,13 @@ const AddRoomCard: React.FC<InjectedFormProps<AddRoomFormData>> = ({
     availableRooms: availablerooms,
     price: price,
     status: status,
-    roomPhoto: photo,
+    photo: photo,
     description: description,
   };
 
   const onSubmit = async () => {
     try {
-      values.roomPhoto = imageUrl;
+      values.photo = imageUrl;
       console.log(values);
       const data = await addroom(values as AddRoomFormData);
       console.log(data);
@@ -147,8 +148,8 @@ const AddRoomCard: React.FC<InjectedFormProps<AddRoomFormData>> = ({
                 onChange={(e) => setStatus(e.target.value)}
               >
                 <option value="">Select Difficulty</option>
-                <option value="easy">Available now</option>
-                <option value="medium">Currently not Available</option>
+                <option value="Available">Available now</option>
+                <option value="Not Available">Currently not Available</option>
               </select>
             </div>
           </div>
@@ -171,6 +172,8 @@ const AddRoomCard: React.FC<InjectedFormProps<AddRoomFormData>> = ({
           <button className="border-blue-500 border-4 px-4 py-2 rounded-md">
             Add Room
           </button>
+
+          <LoadImage image={imageUrl} />
         </div>
       </form>
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Image from "next/image";
 import { InjectedFormProps, reduxForm } from "redux-form";
 import { UserSignUpFormData, usersignup } from "@/store/signup/user-signup-api";
+import { setName } from "@/store/signup/user-signup-slice";
 
 const SignUpCard: React.FC<InjectedFormProps<UserSignUpFormData>> = ({
   handleSubmit,
@@ -52,9 +53,11 @@ const SignUpCard: React.FC<InjectedFormProps<UserSignUpFormData>> = ({
         <div className="mb-4">
           <input
             type="text"
-            id="user name"
+            id="username"
             placeholder="USER NAME"
             className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
+            value={name}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -63,6 +66,8 @@ const SignUpCard: React.FC<InjectedFormProps<UserSignUpFormData>> = ({
             id="phoneNumber"
             placeholder="PHONE NUMBER"
             className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
+            value={phoneNumber}
+            onChange={handlePhoneChange}
           />
         </div>
         <div className="mb-4">
@@ -71,6 +76,8 @@ const SignUpCard: React.FC<InjectedFormProps<UserSignUpFormData>> = ({
             id="password"
             placeholder="PASSWORD"
             className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -79,6 +86,8 @@ const SignUpCard: React.FC<InjectedFormProps<UserSignUpFormData>> = ({
             id="password"
             placeholder="CONFIRM PASSWORD"
             className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
         <div className="flex justify-center">

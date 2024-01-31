@@ -4,14 +4,17 @@ interface PaymentState {
   phoneNumber: string;
   photo: string;
   transactionId: string;
+  email: string,
+  id:string
 }
 
 const PaymentSlice = createSlice({
-  name: "feedbackupload",
+  name: "paymentupload",
   initialState: {
-    phoneNumber:"",
-    photo:"",
-    transactionId:""
+    phoneNumber: "",
+    photo: "",
+    transactionId: "",
+    email: "",
   } as PaymentState,
   reducers: {
     setPhoneNumber: (state, action: PayloadAction<string>) => {
@@ -23,8 +26,11 @@ const PaymentSlice = createSlice({
     setTransactionId: (state, action: PayloadAction<string>) => {
       state.transactionId = action.payload;
     },
+    setEmail: (state, action: PayloadAction<string>) => {
+      state.email = action.payload;
+    },
   },
 });
 
-export const { setPhoneNumber, setPhoto, setTransactionId } = PaymentSlice.actions;
+export const { setPhoneNumber, setPhoto, setTransactionId, setEmail } = PaymentSlice.actions;
 export default PaymentSlice.reducer;

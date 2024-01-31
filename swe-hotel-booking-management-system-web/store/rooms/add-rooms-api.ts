@@ -3,13 +3,13 @@ export type AddRoomFormData = {
   description:string;
   price:string;
   availableRooms:string;
-  roomPhoto:string;
+  photo:string;
   status:string;
 };
 
 export const addroom = async (formData: AddRoomFormData) => {
   try {
-    const response = await fetch("http://localhost:6000/room/addRoom", {
+    const response = await fetch("http://localhost:5000/room/addRoom", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,10 +3,12 @@ import Image from "next/image";
 import { usersignup } from "@/store/signup/user-signup-api";
 import { UserSignInFormData, usersignin } from "@/store/signin/user-signin-api";
 import { InjectedFormProps, reduxForm } from "redux-form";
+import { useRouter } from "next/router";
 
 const SignInCard: React.FC<InjectedFormProps<UserSignInFormData>> = ({
   handleSubmit,
 }) => {
+  const router = useRouter()
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,6 +31,12 @@ const SignInCard: React.FC<InjectedFormProps<UserSignInFormData>> = ({
 
       const data = await usersignin(values as UserSignInFormData);
       console.log(data);
+      if (data.role == "Admin"){
+        router.push("/admin")
+      }
+      else{
+        router.push("/user")
+      }
       console.log("succesfully uploaded");
       // showToast("Upload successful", "success");
     } catch (error) {
@@ -51,8 +59,10 @@ const SignInCard: React.FC<InjectedFormProps<UserSignInFormData>> = ({
           <input
             type="text"
             id="user name"
-            placeholder="USER NAME"
+            placeholder="PHONE NUMBER"
             className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
+            value={phoneNumber}
+            onChange={handlePhoneChange}
           />
         </div>
         <div className="mb-4">
@@ -61,6 +71,8 @@ const SignInCard: React.FC<InjectedFormProps<UserSignInFormData>> = ({
             id="password"
             placeholder="PASSWORD"
             className="w-full border-b border-gray-300 focus:outline-none focus:border-blue-500 py-2"
+            value={password}
+            onChange={(e)=>{setPassword(e.target.value)}}
           />
         </div>
 

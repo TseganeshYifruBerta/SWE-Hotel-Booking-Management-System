@@ -4,9 +4,10 @@ interface loadProps {
 }
 
 const LoadImage : React.FC<loadProps> = ({image}) => {
+    console.log(image)
     return(
         <div>
-<Image src={image} alt={''} width={500} />
+<Image src={image} alt={''} width={500} height={500}/>
         </div>
     )
 }

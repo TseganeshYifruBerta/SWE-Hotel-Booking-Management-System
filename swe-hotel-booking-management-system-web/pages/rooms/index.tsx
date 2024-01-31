@@ -1,5 +1,5 @@
 import TestimonalsCard from "@/components/home/TestimonalsCard";
-import RoomCard from "@/components/room/RoomCard";
+import RoomCard, { RoomCardProps } from "@/components/room/RoomCard";
 import RoomIntro from "@/components/room/RoomIntro";
 import { useGetAllRoomsQuery } from "@/store/rooms/get-all-rooms";
 
@@ -9,11 +9,12 @@ function Rooms() {
   if (isLoading){
     return <div>Loading</div>
   }
-
+  
+console.log(allrooms)
   const pairs = [];
-  for (let i = 0; i < allrooms.length; i += 2) {
+  for (let i = 0; i < allrooms.length; i += 3) {
     if (i + 1 < allrooms.length) {
-      pairs.push([allrooms[i], allrooms[i + 1]]);
+      pairs.push([allrooms[i], allrooms[i + 1], allrooms[i + 2]]);
     } else {
       pairs.push([allrooms[i]]);
     }
@@ -25,10 +26,13 @@ function Rooms() {
         <RoomIntro />
       </div>
       <div>
-        {pairs.map((room) => (
+        {pairs.map((room: any) => (
           <div className="flex justify-center p-4">
-            <RoomCard />
-            <RoomCard />
+            {room.map((item:any, index:any) => (
+              <div key={index} className=" justify-center w-1/3">
+                <RoomCard prop={item} />
+              </div>
+            ))}
           </div>
         ))}
       </div>

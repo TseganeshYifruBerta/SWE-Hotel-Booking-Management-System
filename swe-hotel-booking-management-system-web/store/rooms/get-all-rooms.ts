@@ -10,7 +10,7 @@ export const getAllRoomsApi = createApi({
   endpoints: (builder) => ({
     getAllRooms: builder.query({
       query: () => {
-        let url = "http://localhost:5000/question/getAllQuestionsById";
+        let url = "http://localhost:5000/room/getAllRooms";
         
         return {
           url: url,
