@@ -31,11 +31,11 @@ const SignInCard: React.FC<InjectedFormProps<UserSignInFormData>> = ({
 
       const data = await usersignin(values as UserSignInFormData);
       console.log(data);
-      if (data.role == "Admin"){
-        router.push("/admin")
+      if (data.message == "Admin"){
+        router.push("/admin/rooms")
       }
       else{
-        router.push("/user")
+        router.push("/user/rooms")
       }
       console.log("succesfully uploaded");
       // showToast("Upload successful", "success");

@@ -19,7 +19,7 @@ const RoomDetailById: React.FC = () => {
   return (
     <div>
       <header>
-        <div className="HOTEL">HOTEL</div>
+        <div className="text-blue-500 text-5xl p-4 font-bold">HMS</div>
         <nav>
           <div className="flex justify-end">
             <div className="justify-end flex w-4/6">
@@ -34,7 +34,7 @@ const RoomDetailById: React.FC = () => {
                 </Link>
               </div>
               <div className="w-1/6">
-                <Link href="/admin/rooms/allpayments" className="">
+                <Link href="/admin/allpayments" className="">
                   Payments
                 </Link>
               </div>

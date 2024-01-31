@@ -6,7 +6,7 @@ function ContactUs() {
   return (
     <div>
       <header>
-        <div className="HOTEL">HOTEL</div>
+        <div className="text-blue-500 text-5xl p-4 font-bold">HMS</div>
         <nav>
           <div className="flex justify-end">
             <div className="justify-end flex w-4/6">
@@ -30,7 +30,7 @@ function ContactUs() {
       </header>
       <div>
         <div>
-          <h1 className="text-5xl font-bold flex justify-center">CONTACT US</h1>
+          <h1 className="text-5xl font-bold flex justify-center">GIVE US FEEDBACK</h1>
         </div>
         <div className="w-2/3 p-6">
           <h2 className="text-3xl font-semibold pb-4">WE ARE HERE FOR YOU</h2>

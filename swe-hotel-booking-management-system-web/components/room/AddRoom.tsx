@@ -1,11 +1,14 @@
 import LoadImage from "@/pages/home/image";
 import { AddRoomFormData, addroom } from "@/store/rooms/add-rooms-api";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { InjectedFormProps, reduxForm } from "redux-form";
 
 const AddRoomCard: React.FC<InjectedFormProps<AddRoomFormData>> = ({
   handleSubmit,
 }) => {
+  const router = useRouter()
   const [title, setTitle] = useState<string>("");
   const [price, setPrice] = useState<string>("");
   const [availablerooms, setAvailableRooms] = useState<string>("");
@@ -56,6 +59,7 @@ const AddRoomCard: React.FC<InjectedFormProps<AddRoomFormData>> = ({
       console.log(values);
       const data = await addroom(values as AddRoomFormData);
       console.log(data);
+      router.push("/admin/rooms")
       // showToast("Upload successful", "success");
     } catch (error) {
       console.error("Addroom error:", error);
@@ -169,9 +173,9 @@ const AddRoomCard: React.FC<InjectedFormProps<AddRoomFormData>> = ({
             />
           </div>
 
-          <button className="border-blue-500 border-4 px-4 py-2 rounded-md">
-            Add Room
-          </button>
+            <button className="border-blue-500 border-4 px-4 py-2 rounded-md">
+              Add Room
+            </button>
 
           <LoadImage image={imageUrl} />
         </div>

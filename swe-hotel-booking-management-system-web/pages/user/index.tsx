@@ -1,31 +1,27 @@
 import HomeIntro from "@/components/home/HomeIntro";
 import Link from "next/link";
 
-function AdminHomePage() {
+function UserHomePage() {
   return (
     <div>
       <header>
-        <div className="HOTEL">HOTEL</div>
+        <div className="text-blue-500 text-5xl p-4 font-bold">HMS</div>
         <nav>
           <div className="flex justify-end">
             <div className="justify-end flex w-4/6">
               <div className="w-1/6">
-                <Link href="/admin" className="">
+                <Link href="/user" className="">
                   Home
                 </Link>
               </div>
               <div className="w-1/6">
-                <Link href="/admin/rooms" className="">
+                <Link href="/user/rooms" className="">
                   Rooms
                 </Link>
               </div>
+
               <div className="w-1/6">
-                <Link href="/admin/rooms/allpayments" className="">
-                  Payments
-                </Link>
-              </div>
-              <div className="w-1/6">
-                <Link href="/admin/feedback">Feedback</Link>
+                <Link href="/user/feedback">Feedback</Link>
               </div>
             </div>
           </div>
@@ -38,4 +34,4 @@ function AdminHomePage() {
   );
 }
 
-export default AdminHomePage;
+export default UserHomePage;
