@@ -1,0 +1,25 @@
+body{
+    background-color: rgb(33, 6, 53);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+} 
+.lower{
+    display: flex;
+    justify-content: space-between;
+} 
+.title{
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+
+}
+.inputfild{
+  background: #353959;
+  border-radius: 1.4rem;
+  padding: 0 0.8rem;
+  display: flex; 
+  align-items: center; 
+}
