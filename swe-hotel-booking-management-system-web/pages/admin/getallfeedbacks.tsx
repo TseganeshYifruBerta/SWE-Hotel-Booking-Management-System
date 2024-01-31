@@ -49,7 +49,7 @@ const AllFeedback: React.FC = () => {
           All Customer Feedbacks
         </div>
         {allfeedback.map((history: any) => (
-          <div className="flex border-primary border-2 m-2 p-1 justify-between">
+          <div className="flex border-primary border-2 m-2 p-1 justify-between" key={history.id}>
             <div className="w-1/4">{history.id}</div>
             <div className="w-1/4">{history.message}</div>
             <div className="w-1/4">{history.email}</div>

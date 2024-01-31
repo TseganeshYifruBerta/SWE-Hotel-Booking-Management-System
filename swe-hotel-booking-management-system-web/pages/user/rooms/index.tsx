@@ -67,7 +67,7 @@ function Rooms() {
         </div>
         <div>
           {pairs.map((room: any) => (
-            <div className="flex justify-center p-4">
+            <div className="flex justify-center p-4" key={room.id}>
               {room.map((item: any, index: any) => (
                 <div key={index} className=" justify-center w-1/2">
                   <RoomCard prop={item} />

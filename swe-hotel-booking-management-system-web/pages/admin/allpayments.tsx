@@ -49,7 +49,7 @@ const AllPaymentHistoryById: React.FC = () => {
           All Payment Histories
         </div>
         {allhistory.map((history: any) => (
-          <div className="flex border-primary border-2 m-2 p-1 justify-between">
+          <div className="flex border-primary border-2 m-2 p-1 justify-between" key={history.id}>
             <div className="w-1/4">{history.createdAt}</div>
             <div className="w-1/4">
               <img
