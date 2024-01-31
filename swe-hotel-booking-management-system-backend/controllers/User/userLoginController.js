@@ -22,7 +22,7 @@ const userLogin = async (req, res) => {
         phoneNumber,
       },
     });
-    const name = user.name;
+    
 
 
     if (!user) {
@@ -32,7 +32,7 @@ const userLogin = async (req, res) => {
     if (user.password !== password) {
       return res.status(401).json({ message: "Invalid password" });
     }
-
+     const name = user.name;
     const secretKey = generateSecretKey();
     // const email = user.email;
     const tokenExpiration = "2d";
